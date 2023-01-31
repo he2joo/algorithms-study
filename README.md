@@ -5,12 +5,8 @@
 - 언어: Java, Python
 
 ## 스터디 규칙
-- PR로 코드리뷰를 해주는 건 어떨까?
-- 이 레포를 fork 후, 각자의 폴더를 만들어서 PR -> merge 시키기
-- 폴더는 (programmers or leetcode/이름/몇주) 이런 식으로
 
-## 테스트
-- by hyun
-- by 나그
-- fia 다녀감
-- by ayaan
+- 이 레포를 fork 후, 각자의 폴더를 만들어서 PR
+    - PR만 하고 merge는 꼭 나중에! -> 코드리뷰 해야 함
+    - 코드리뷰 다 끝나면 merge
+- 폴더 경로: (site/name/week/file)
