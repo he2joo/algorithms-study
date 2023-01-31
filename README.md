@@ -29,4 +29,4 @@
 
 ## PR message
 
-(name): (site), (알고리즘 유형), (문제 번호/타이틀), (언어)
+"name: Programmers or LeetCode / 알고리즘 유형 / 문제 번호 or 타이틀 / 언어"
