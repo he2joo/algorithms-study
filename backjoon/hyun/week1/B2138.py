@@ -1,3 +1,6 @@
+# https://www.acmicpc.net/problem/2138
+# 그리디
+
 n = int(input())
 given_bulb = list(map(int, input()))
 target_bulb = list(map(int, input()))
