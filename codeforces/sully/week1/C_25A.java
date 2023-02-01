@@ -1,5 +1,5 @@
 // https://codeforces.com/problemset/problem/25/A
-// 완전 탐색
+// 구현 (완전 탐색)
 
 package codeforces.sully.week1;
 
