@@ -1,3 +1,6 @@
+//https://www.acmicpc.net/problem/1946
+//그리디
+
 import sys
 
 test = int(sys.stdin.readline()) //총 테스트 케이스 횟수 입력
