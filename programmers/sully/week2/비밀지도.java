@@ -1,8 +1,22 @@
 package programmers.sully.week2;
 
+public class 비밀지도 {
+    public String[] solution(int n, int[] arr1, int[] arr2) {
+        String[] answer = new String[n];
+        for (int i = 0; i < n; i++) {
+            // 2진수 앞에 0 출력: https://nsmchan.tistory.com/15
+            String tmp = String.format("%" + n + "s", Integer.toBinaryString(arr1[i] | arr2[i])); // OR 연산(둘 중에 하나만 포함되면 되니)
+            answer[i] = tmp.replace("0", " ")
+                    .replace("1", "#");
+        }
+        return answer;
+    }
+}
+
+/*
 import java.util.Arrays;
 
-public class SecretMapSully {
+public class 비밀지도 {
     // 암호 해독
     // 각 칸은 "", "#" 두 종류
     // 지도1 + 지도2 -> 2진수로 암호화 됨
@@ -40,7 +54,7 @@ public class SecretMapSully {
             // tmpArr1 배열에 이진수가 저장돼 있으니 -> 이진수를 공백과 #으로 바꾸는 과정
             // tmpArr1[i]의 length가 4이하인 경우 앞자리에 공백 넣어주기
             for (int j = 0; j < tmpArr1.length; j++) {
-                if (tmpArr1.length < 5) { // 앞자리 공백 넣어주기
+                if (tmpArr1.length < n) { // 앞자리 공백 넣어주기
 
                 }
             }
@@ -55,8 +69,5 @@ public class SecretMapSully {
 
         return answer;
     }
-
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(new SecretMapSully().solution(5, new int[]{9, 20, 28, 18, 11}, new int[]{30, 1, 21, 17, 28})));
-    }
 }
+*/
