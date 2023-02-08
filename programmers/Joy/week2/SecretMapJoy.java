@@ -11,9 +11,9 @@ public class SecretMapJoy {
 
 //      1. 입력받은 문자열을 정수로 변환하여 int 배열에 넣는다.
         str1 = str1.replaceAll("]"," ");
-        str1 = str1.replaceAll("["," ");
+        str1 = str1.replaceAll("\\["," ");
         str2 = str1.replaceAll("]"," ");
-        str2 = str1.replaceAll("["," ");
+        str2 = str1.replaceAll("\\["," ");
         String[] strArr1 = str1.split(" ");
         String[] strArr2 = str2.split(" ");
 
