@@ -1,6 +1,6 @@
 package programmers.sully.week2;
 
-public class 숫자_문자열과_영단어_Sully {
+public class 숫자_문자열과_영단어 {
     public static boolean isInteger(String strValue) {
         try {
             Integer.parseInt(strValue);
@@ -81,6 +81,6 @@ public class 숫자_문자열과_영단어_Sully {
     }
 
     public static void main(String[] args) {
-        System.out.println(new 숫자_문자열과_영단어_Sully().solution("one4seveneight"));
+        System.out.println(new 숫자_문자열과_영단어().solution("one4seveneight"));
     }
 }
