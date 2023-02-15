@@ -1,6 +1,6 @@
 package programmers.sully.week3;
 
-class Solution {
+class 실패율 {
     // (스테이지 도달했으나, 클리어 x) / (스테이지 도달한 플레이어 수)
     // N: 전체 스테이지 개수
     // stage: 사용자가 "멈춰있는" 스테이지 번호 배열 -> 각 배열은 사용자가 현재 도전 중인 스테이지 번호
