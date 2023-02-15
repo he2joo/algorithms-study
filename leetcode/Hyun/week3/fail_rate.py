@@ -7,27 +7,20 @@
 # result = [스테이지 실패율을 내림차순]
 
 def solution(N, stages):
-    stage_arrived = [0] * (N + 1)
-    fail_cnt = [0] * (N + 1)
-
-    for stop_stage in stages:
-        if stop_stage <= N:
-            fail_cnt[stop_stage] += 1
-        for i in range(min(stop_stage + 1, N + 1)):
-            stage_arrived[i] += 1
-
-    fail_rate = []
-
+    fail_cnt = {}
     for i in range(1, N + 1):
-        if stage_arrived[i] != 0:
-            fail_rate.append((i, fail_cnt[i] / stage_arrived[i]))
+        fail_cnt[i] = stages.count(i)
+
+    denominator = len(stages)
+
+    fail_rates = []
+    for stage_idx in range(1, N + 1):
+        if denominator > 0:
+            current_fail_rate = fail_cnt[stage_idx] / denominator
+            fail_rates.append((stage_idx, current_fail_rate))
+            denominator -= fail_cnt[stage_idx]
         else:
-            fail_rate.append((i, 0))
+            fail_rates.append((stage_idx, 0))
 
-    fail_rate.sort(key=lambda x: (-x[1], x[0]))
-
-    ans = []
-    for stage_idx, _ in fail_rate:
-        ans.append(stage_idx)
-
-    return ans
+    fail_rates.sort(key=lambda x: (-x[1], x[0]))
+    return [stage_idx for stage_idx, _ in fail_rates]

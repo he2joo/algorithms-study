@@ -31,5 +31,5 @@ def solution(dartResult):
                 score = -score
 
         scores.append(score)
-        
+
     return sum(scores)
