@@ -2,10 +2,9 @@ package leetcode.sully.week3;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-class Solution {
+class L989 {
     public List<Integer> addToArrayForm(int[] num, int k) {
 //        for (int i = num.length; i >= 0; i++) {
 //            numToInt += num[i] * Math.pow();
@@ -31,16 +30,12 @@ class Solution {
         // 그럼 String 형태로 하나하나씩 저장을 해야 하는데 -> 1을 어떻게 더하냐 이 말이지
 
         BigInteger bigInteger = new BigInteger(sb.toString());
-        bigInteger.add(BigInteger.valueOf(k));
-        System.out.println(bigInteger);
+        bigInteger = bigInteger.add(BigInteger.valueOf(k));
+
+        for (int i = 0; i < bigInteger.toString().length(); i++) {
+            answer.add(bigInteger.toString().charAt(i) - '0');
+        }
 
         return answer;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Solution().addToArrayForm(new int[]{9, 9, 9, 9, 9, 9, 9, 9, 9, 9}, 1));
-
-        // 이게 문제가 됨 -> 그럼 이걸 어떻게 int형으로 바꿔야 할까?
-//        System.out.println(Integer.parseInt("9999999999"));
     }
 }
