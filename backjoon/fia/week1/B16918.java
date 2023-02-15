@@ -51,7 +51,7 @@ public class B16918 {
                 }
             } else if (i % 2 == 1) {
                 // 홀수인 경우 아무것도 하지 않는다
-                for (int r = 0; r < ROW; r++) { // 타이머 3 폭탄은 폭발한다
+                for (int r = 0; r < ROW; r++) { // 폭탄은 폭발한다
                     for (int c = 0; c < COLUMN; c++) {
                         if (bombTime[r][c] == i) {
                             ground[r][c] = DOT;
