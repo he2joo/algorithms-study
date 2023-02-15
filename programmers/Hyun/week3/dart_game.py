@@ -6,32 +6,29 @@
 # * -> 점수 2배, # -> 해당점수만 -1 곱하기 (*이 적용된다)
 import re
 
-dartResult = "1D2S#10S"
+dartResult = "1D2S3T*"
 # ans = 37
 
-bonus = {"S": 1, "D": 2, "T": 3}
+bonus_dict = {"S": 1, "D": 2, "T": 3}
+scores = []
+score_idx = 0
+score_str = ""
+for idx, ch in enumerate(dartResult):
+    if ch.isdigit():
+        score_str += ch
 
-total_score = 0
+    elif ch in bonus_dict.keys():
+        score = int(score_str)
+        score_str = ""
+        score = pow(score, bonus_dict[ch])
+        if (idx + 1) < len(dartResult) and dartResult[idx + 1] in ["*", "#"]:
+            if dartResult[idx + 1] == '*':
+                score *= 2
+                if score_idx > 0:
+                    scores[score_idx-1] *= 2
+            else:
+                score = -score
 
-p = re.compile('.*?[SDT][*#]?')
-
-while dartResult:
-    fragment = p.match(dartResult).group()
-
-    if fragment[-1] not in ['*', '#']:
-        fragment = fragment[:-1]
-    print(fragment)
-
-    dartResult = dartResult.replace(fragment, "", 1)
-
-    score = int(fragment[0])
-    bonused_score = pow(score, bonus[fragment[1]])
-    if len(fragment) == 3:
-        if fragment[2] == "*":
-            total_score *= 2
-            bonused_score *= 2
-        else:
-            bonused_score = -bonused_score
-
-    total_score += bonused_score
+        scores.append(score)
+        score_idx += 1
 
