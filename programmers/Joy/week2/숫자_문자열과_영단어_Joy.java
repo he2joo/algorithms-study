@@ -35,6 +35,10 @@ public class 숫자_문자열과_영단어_Joy {
         String s = "2three45sixseven";
         s = s.replaceAll("[0123456789]","*");
         String[] strArr = s.split("");
+        for (int i = 0; i < strArr.length; i++) {
+            String s1 = strArr[i];
+
+        }
         System.out.println(s);
         System.out.println(strArr.length);
     }
