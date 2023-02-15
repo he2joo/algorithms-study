@@ -32,8 +32,14 @@ class L989 {
         BigInteger bigInteger = new BigInteger(sb.toString());
         bigInteger = bigInteger.add(BigInteger.valueOf(k));
 
-        for (int i = 0; i < bigInteger.toString().length(); i++) {
-            answer.add(bigInteger.toString().charAt(i) - '0');
+        // Time Limit Exceeded 에러
+//        for (int i = 0; i < bigInteger.toString().length(); i++) {
+//            answer.add(bigInteger.toString().charAt(i) - '0');
+//        }
+
+        String bigIntegerToString = bigInteger.toString();
+        for (int i = 0; i < bigIntegerToString.length(); i++) {
+            answer.add(bigIntegerToString.charAt(i) - '0');
         }
 
         return answer;
