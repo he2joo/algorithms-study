@@ -24,3 +24,5 @@ def solution(N, stages):
 
     fail_rates.sort(key=lambda x: (-x[1], x[0]))
     return [stage_idx for stage_idx, _ in fail_rates]
+
+
