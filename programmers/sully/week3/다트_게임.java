@@ -1,9 +1,6 @@
 package programmers.sully.week3;
 
-import java.util.ArrayList;
-import java.util.List;
-
-class Solution {
+class 다트_게임 {
     /*
      * 로직
      * 게임은 총 3번의 기회
@@ -26,31 +23,66 @@ class Solution {
 
     // 0 ~ 10의 정수와 문자 S, D, T, *, #로 구성된 문자열이 입력될 시 총점수를 반환하는 메서드 작성
     public int solution(String dartResult) {
+        StringBuilder tmpAnswer = new StringBuilder(); // 0부터 10까지의 정수니 String 형태로 생성
         int answer = 0;
-        char[] chars = dartResult.toCharArray();
-        int tmpAnswer = 0;
-        List<Integer> tmpAnswerList = new ArrayList<>();
-        for (int i = 0; i < chars.length; i++) {
-            if (isInteger(chars[i])) { // 이때 tmpAnswer 초기화
-                answer += tmpAnswer; // 그동안 했던 연산을 더해주고
-                tmpAnswerList.add(tmpAnswer); // *과 #을 위해 List 배열에 담아준다 (그 전의 tmpAnswer 값을 알아야 하니)
-                tmpAnswer = Integer.parseInt(String.valueOf(chars[i])); // 초기화
+//        char[] chars = dartResult.toCharArray();
+        int[] chances = new int[3]; // 다트 게임은 총 3번의 기회
+        int index = 0;
+        for (int i = 0; i < dartResult.length(); i++) {
+            char c = dartResult.charAt(i);
+            switch (c) {
+                case 'S' -> {
+                    chances[index] = Integer.parseInt(tmpAnswer.toString()); // Integer 형태로 배열에 저장
+                    index++;
+                    tmpAnswer = new StringBuilder(); // 이때 tmpAnswer 초기화
+                }
+                case 'D' -> {
+                    chances[index] = Integer.parseInt(tmpAnswer.toString()); // Integer 형태로 배열에 저장
+                    chances[index] = (int) Math.pow(chances[index], 2);
+                    index++;
+                    tmpAnswer = new StringBuilder(); // 이때 tmpAnswer 초기화
+                }
+                case 'T' -> {
+                    chances[index] = Integer.parseInt(tmpAnswer.toString()); // Integer 형태로 배열에 저장
+                    chances[index] = (int) Math.pow(chances[index], 3);
+                    index++;
+                    tmpAnswer = new StringBuilder(); // 이때 tmpAnswer 초기화
+                }
+                case '*' -> {
+                    if (index > 1) {
+                        chances[index - 2] *= 2;
+                    }
+                    chances[index - 1] *= 2;
+                }
+                case '#' -> chances[index - 1] *= -1;
+                default -> tmpAnswer.append(c);
             }
 
-            if (chars[i] == 'S') { // 여기부터는 문자가 들어올 때 tmpAnswer를 가지고 계속 조립해주면 됨
-                Math.pow(tmpAnswer, 1);
-            } else if (chars[i] == 'D') {
-                Math.pow(tmpAnswer, 2);
-            } else if (chars[i] == 'T') {
-                Math.pow(tmpAnswer, 3);
-            }
-
-            // i-1에서의 tmpAnswer도 2배를 해줘야 함 -> tmpAnswerList를 만들어서 i-1번째 거를 찾아보자
-            if (chars[i] == '*') {
-            } else if (chars[i] == '#') {
-
-            }
+//            if (isInteger(chars[i])) { // 이때 tmpAnswer 초기화
+//                answer += tmpAnswer; // 그동안 했던 연산을 더해주고
+//                tmpAnswerList.add(tmpAnswer); // *과 #을 위해 List 배열에 담아준다 (그 전의 tmpAnswer 값을 알아야 하니)
+//                tmpAnswer = Integer.parseInt(String.valueOf(chars[i])); // 초기화
+//            }
+//
+//            if (chars[i] == 'S') { // 여기부터는 문자가 들어올 때 tmpAnswer를 가지고 계속 조립해주면 됨
+//                Math.pow(tmpAnswer, 1);
+//            } else if (chars[i] == 'D') {
+//                Math.pow(tmpAnswer, 2);
+//            } else if (chars[i] == 'T') {
+//                Math.pow(tmpAnswer, 3);
+//            }
+//
+//            // i-1에서의 tmpAnswer도 2배를 해줘야 함 -> tmpAnswerList를 만들어서 i-1번째 거를 찾아보자
+//            if (chars[i] == '*') {
+//            } else if (chars[i] == '#') {
+//
+//            }
         }
+
+        for (int chance : chances) {
+            answer += chance;
+        }
+
         return answer;
     }
 
@@ -65,12 +97,12 @@ class Solution {
     7 / 1D2S3T* / 59 / 1^2 + 2^1 * 2 + 3^3 * 2
     */
 
-    private boolean isInteger(char c) {
-        try {
-            Integer.parseInt(String.valueOf(c));
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
+//    private boolean isInteger(char c) {
+//        try {
+//            Integer.parseInt(String.valueOf(c));
+//            return true;
+//        } catch (NumberFormatException e) {
+//            return false;
+//        }
+//    }
 }
