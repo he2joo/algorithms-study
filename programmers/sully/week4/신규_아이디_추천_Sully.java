@@ -14,8 +14,7 @@ public class 신규_아이디_추천_Sully {
 
         // 3단계
         // (마침표(.)가 2번 "이상" 연속된 부분을 하나의 마침표(.)로 치환)
-        new_id = new_id.replace("...", "."); // 점의 개수가 홀수일 때
-        new_id = new_id.replace("..", "."); // 점의 개수가 짝수일 때
+        new_id = new_id.replaceAll("[.]{2,}", "."); // 점의 개수가 홀수일 때
 
         // 4단계
         // (마침표(.)가 처음이나 끝에 위치한다면 제거)
@@ -66,7 +65,8 @@ public class 신규_아이디_추천_Sully {
 //        }
 //        System.out.println(tmp);
 
-//        System.out.println(solution("....!@BaT#*..y.abcdefghijklm."));
+//        System.out.println(solution("....!@BaT#*.....y.abcdefghijklm."));
+        System.out.println(solution("....!@BaT#*....y.abcdefghijklm."));
 //        System.out.println(solution("...!@BaT#*..y.abcdefghijklm."));
 //        System.out.println(solution("."));
 //        System.out.println(solution("z-_+.^."));
