@@ -1,5 +1,6 @@
 package leetcode.Joy.week3;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,16 +12,15 @@ public class Leet989 {
         for (int i : num){
             str += i;
         }
-        int n = Integer.parseInt(str)+k;
+        BigInteger n = new BigInteger(str+k);
         String str2 = n+"";
-        System.out.println(n);
-        Integer[] answer = new Integer[str2.length()];
+        BigInteger[] answer = new BigInteger[str2.length()];
 
         for (int i=str2.length()-1;i>=0;i--){
-            answer[i] = n%10;
-            n /= 10;
+            answer[i] = n.remainder(BigInteger.TEN);
+            n = n.divide(BigInteger.TEN);
         }
-        List<Integer> list = Arrays.asList(answer);
+        List<BigInteger> list = Arrays.asList(answer);
         System.out.println(list);
     }
 }
