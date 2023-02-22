@@ -35,19 +35,29 @@ class L226 {
         // val: int 형
         // left, right : TreeNode 형
 
-        if (root.right == null) {
-            root.right = new TreeNode(root.val);
-        }
-
-        if (root.left == null) {
-            root.left = new TreeNode(root.val);
-        }
+//        if (root.right == null) {
+//            root.right = new TreeNode(root.val);
+//        }
+//
+//        if (root.left == null) {
+//            root.left = new TreeNode(root.val);
+//        }
 
 //        TreeNode val = new TreeNode(root.val);
 //        TreeNode left = new TreeNode(root.left.val);
 //        TreeNode right = new TreeNode(root.right.val);
 //
 //        TreeNode treeNode = new TreeNode(val.val, left.right, right.left);
+
+        if (root == null) {
+            return null;
+        }
+
+        TreeNode right = invertTree(root.right);
+        TreeNode left = invertTree(root.left);
+
+        root.left = right;
+        root.right = left;
 
         return root;
     }
