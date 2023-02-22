@@ -15,7 +15,8 @@ public class L35 {
         int mid;
 
         while (lt <= rt) {
-            mid = (rt - lt) / 2 + lt; // fia
+            mid = (lt + rt) / 2;
+//            mid = (rt - lt) / 2 + lt; // fia
             if (nums[mid] > target) {
                 rt = mid - 1;
             } else if (nums[mid] < target) {
