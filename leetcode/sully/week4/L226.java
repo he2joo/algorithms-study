@@ -1,0 +1,54 @@
+package leetcode.sully.week4;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+
+class L226 {
+    public TreeNode invertTree(TreeNode root) {
+//        javax.swing.tree.TreeNode
+        // 바이너리 트리: 노드마다 자식이 2 이하인 트리
+        // 그니까 배열에서 1-2-2-2-2-2... 이런 식으로 구분하면 됨
+
+        // 트리에서는 엄마 노드보다 작은 데이터가 왼쪽 자식 노드에 와야 하고
+        // 엄마 노드보다 큰 데이터가 오른쪽 자식 노드에 와야 함
+
+        // root = [4,2,7,1,3,6,9]
+        // <4> / (2), [7] / {1}, {3} -> (2) / {6}, {9} -> [7]
+
+        // val: int 형
+        // left, right : TreeNode 형
+
+        if (root.right == null) {
+            root.right = new TreeNode(root.val);
+        }
+
+        if (root.left == null) {
+            root.left = new TreeNode(root.val);
+        }
+
+//        TreeNode val = new TreeNode(root.val);
+//        TreeNode left = new TreeNode(root.left.val);
+//        TreeNode right = new TreeNode(root.right.val);
+//
+//        TreeNode treeNode = new TreeNode(val.val, left.right, right.left);
+
+        return root;
+    }
+}
