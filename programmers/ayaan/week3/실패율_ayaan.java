@@ -1,44 +1,56 @@
 package programmers.ayaan.week3;
 
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Comparator;
 
 public class 실패율_ayaan {
     public static void main(String[] args) {
         int N = 5;
         int[] stages = {2,1,2,6,2,4,3,3};
         int[] result = solution(N, stages);
+        System.out.println(Arrays.toString(result));
     }
 
     public static int[] solution(int N, int[] stages) {
-        int[] answer = {};
+        int[] answer = new int[N];
 
-        StringBuilder sb = new StringBuilder();
-        for(int i : stages){
-            sb.append(i);
+        // stage에 있는 플레이어의 수를 배열에 담는다.
+        int[] stagePlayerCount = new int[N+2];
+        for(int stage : stages){
+            stagePlayerCount[stage]++;
         }
-        String stageStr = sb.toString();
+
         int clearPlayer = stages.length;
         int notClearPlayer = 0;
 
-        Double[] arr = new Double[N];
+        double[][] result = new double[N][2];
 
         for(int i=1; i<=N; i++){
-            char num = Integer.toString(i).charAt(0);
-            notClearPlayer = (int)stageStr.chars().filter(c -> c == num).count();
+            // stage를 아직 클리어 하지 않는 플레이어 수 = stage에 있는 플레이어의 수
+            notClearPlayer = stagePlayerCount[i];
 
+            // result[0] = index
+            result[i-1][0] = i;
+            // result[1] = 실패율
             if(clearPlayer == 0){
-                arr[i-1] = (double)0;
+                result[i-1][1] = 0;
             } else {
-                arr[i-1] = (double)notClearPlayer / (double)clearPlayer;
+                result[i-1][1] = (double)notClearPlayer/clearPlayer;
             }
 
             clearPlayer -= notClearPlayer;
-            stageStr.replaceAll(Character.toString(num), "");
         }
 
-        Arrays.sort(arr, Collections.reverseOrder());
-        System.out.println(arr);
+        Arrays.sort(result, new Comparator<double[]>() {
+            @Override
+            public int compare(double[] o1, double[] o2) {
+                return Double.compare(o2[1], o1[1]);
+            }
+        });
+
+        for(int i=0; i<result.length; i++){
+            answer[i] = (int)result[i][0];
+        }
 
         return answer;
     }
