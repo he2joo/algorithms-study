@@ -15,35 +15,15 @@ public class InvertBinaryTree_ayaan {
     }
 
     public static TreeNode invertTree(TreeNode root) {
-        TreeNode left = root.left;
-        TreeNode right = root.right;
-
         if(root == null){
             return root;
         }
 
-        TreeNode temp;
-        temp = left;
+        // 이해는 되는데 이걸 어떻게 생각해내지...
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
         root.left = right;
-        root.right = temp;
-
-        while(true){
-            TreeNode left_left = root.left.left;
-            TreeNode left_right = root.left.right;
-            if(left_left == null && left_right == null){
-                break;
-            }
-            left = invertTree(left);
-        }
-
-        while(true){
-            TreeNode right_left = root.right.left;
-            TreeNode right_right = root.right.right;
-            if(right_left == null && right_right == null){
-                break;
-            }
-            right = invertTree(right);
-        }
+        root.right = left;
 
         return root;
     }
