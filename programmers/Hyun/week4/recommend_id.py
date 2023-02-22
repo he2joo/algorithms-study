@@ -26,7 +26,6 @@ def solution(new_id):
     if new_id[-1] == ".":
         new_id = new_id[:-1]
 
-
     # 7 new_id 가 2자이하면, 마지막문자를 추가
     while len(new_id) < 3:
         new_id += new_id[-1]
