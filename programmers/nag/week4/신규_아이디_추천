@@ -1,0 +1,20 @@
+import re
+
+id = "...!@BaT#*..y.abcdefghijklm"
+answer = ''
+
+id = id.lower()
+print(id)
+for i in id:
+  ascii = ord(i)
+  if not(ascii == 45 or ascii == 46 or (ascii >= 48 and ascii <= 57) or ascii == 95 or (ascii >= 97 and ascii <=122)):
+    id = id.replace(i,' ')
+id = id.replace(' ','')
+print(id)
+
+if id[0] == '.':
+  id[0] = ' '
+if id[len(id)] == '.':
+  id[len(id)] = ' '
+print(id)
+
