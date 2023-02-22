@@ -1,5 +1,8 @@
 package programmers.ayaan.week4;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class 키패드누르기_ayaan {
     public static void main(String[] args) {
         int[] arr = {1,3,4,5,8,2,1,4,5,9,5};
@@ -10,54 +13,58 @@ public class 키패드누르기_ayaan {
     }
 
     public static String solution(int[] numbers, String hand) {
-        String answer = "";
+        Map<Integer, int[]> keyMap = new HashMap<>();
+        keyMap.put(1, new int[]{0, 0});
+        keyMap.put(2, new int[]{0, 1});
+        keyMap.put(3, new int[]{0, 2});
+        keyMap.put(4, new int[]{1, 0});
+        keyMap.put(5, new int[]{1, 1});
+        keyMap.put(6, new int[]{1, 2});
+        keyMap.put(7, new int[]{2, 0});
+        keyMap.put(8, new int[]{2, 1});
+        keyMap.put(9, new int[]{2, 2});
+        keyMap.put(10, new int[]{3, 0});
+        keyMap.put(0, new int[]{3, 1});
+        keyMap.put(12, new int[]{3, 2});
 
-        int left = 3;
-        int right = 3;
-        for(int number : numbers){
-            if(number == 0){
-                int left_distance = (left == 0) ? 4 : (left % 3 + 1);
-                int right_distance = (right == 0) ? 4 : (right % 3 + 1);
-                if(left_distance < right_distance){
-                    answer += "L";
-                } else if (left_distance > right_distance){
-                    answer += "R";
-                } else {
-                    answer += hand.substring(0,1).toUpperCase();
-                }
-            } else if(number % 3 == 1){
-                answer += "L";
-                if(number <= 3){
-                    left = 0;
-                } else if(number > 3 && number <= 6){
-                    left = 1;
-                } else {
-                    left = 2;
-                }
-            } else if(number % 3 == 0){
-                answer += "R";
-                if(number <= 3){
-                    right = 0;
-                } else if(number > 3 && number <= 6){
-                    right = 1;
-                } else {
-                    right = 2;
-                }
+        int left = 10;
+        int right = 12;
+
+        StringBuilder result = new StringBuilder();
+
+        for(int num : numbers){
+            if(num % 3 == 1){
+                result.append("L");
+                left = num;
+            } else if(num != 0 && num % 3 == 0){
+                result.append("R");
+                right = num;
             } else {
-                int line = number / 3;
-                int left_distance = left - line + 1;
-                int right_distance = right - line + 1;
+                int[] left_point = keyMap.get(left);
+                int[] right_point = keyMap.get(right);
+                int[] num_point = keyMap.get(num);
+
+                int left_distance = Math.abs(num_point[0] - left_point[0]) + Math.abs(num_point[1] - left_point[1]);
+                int right_distance = Math.abs(num_point[0] - right_point[0]) + Math.abs(num_point[1] - right_point[1]);
+
                 if(left_distance < right_distance){
-                    answer += "L";
-                } else if (left_distance > right_distance){
-                    answer += "R";
+                    result.append("L");
+                    left = num;
+                } else if(left_distance > right_distance){
+                    result.append("R");
+                    right = num;
                 } else {
-                    answer += hand.substring(0,1).toUpperCase();
+                    if(hand.equals("left")){
+                        result.append("L");
+                        left = num;
+                    } else {
+                        result.append("R");
+                        right = num;
+                    }
                 }
             }
-
         }
 
-        return answer;
+        return result.toString();
     }
 }
