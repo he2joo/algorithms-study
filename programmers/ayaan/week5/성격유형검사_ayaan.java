@@ -26,58 +26,58 @@ public class 성격유형검사_ayaan {
             switch(s){
                 case "RT":
                     if(val < 4) {
-                        score[0][0] = score_value[val-1];
+                        score[0][0] += score_value[val-1];
                     } else {
-                        score[0][1] = score_value[val-1];
+                        score[0][1] += score_value[val-1];
                     }
                     break;
                 case "TR":
                     if(val < 4) {
-                        score[0][1] = score_value[val-1];
+                        score[0][1] += score_value[val-1];
                     } else {
-                        score[0][0] = score_value[val-1];
+                        score[0][0] += score_value[val-1];
                     }
                     break;
                 case "CF":
                     if(val < 4) {
-                        score[1][0] = score_value[val-1];
+                        score[1][0] += score_value[val-1];
                     } else {
-                        score[1][1] = score_value[val-1];
+                        score[1][1] += score_value[val-1];
                     }
                     break;
                 case "FC":
                     if(val < 4) {
-                        score[1][1] = score_value[val-1];
+                        score[1][1] += score_value[val-1];
                     } else {
-                        score[1][0] = score_value[val-1];
+                        score[1][0] += score_value[val-1];
                     }
                     break;
                 case "JM":
                     if(val < 4) {
-                        score[2][0] = score_value[val-1];
+                        score[2][0] += score_value[val-1];
                     } else {
-                        score[2][1] = score_value[val-1];
+                        score[2][1] += score_value[val-1];
                     }
                     break;
                 case "MJ":
                     if(val < 4) {
-                        score[2][1] = score_value[val-1];
+                        score[2][1] += score_value[val-1];
                     } else {
-                        score[2][0] = score_value[val-1];
+                        score[2][0] += score_value[val-1];
                     }
                     break;
                 case "AN":
                     if(val < 4) {
-                        score[3][0] = score_value[val-1];
+                        score[3][0] += score_value[val-1];
                     } else {
-                        score[3][1] = score_value[val-1];
+                        score[3][1] += score_value[val-1];
                     }
                     break;
                 case "NA":
                     if(val < 4) {
-                        score[3][1] = score_value[val-1];
+                        score[3][1] += score_value[val-1];
                     } else {
-                        score[3][0] = score_value[val-1];
+                        score[3][0] += score_value[val-1];
                     }
                     break;
             }
