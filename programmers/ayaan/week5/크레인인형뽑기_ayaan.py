@@ -10,7 +10,7 @@ def solution(board, moves):
                 continue
             
             if len(stack) != 0 and stack[-1] == val:
-                stack = stack.pop
+                stack.pop()
                 answer += 2
             else :
                 stack.append(val)
