@@ -40,6 +40,9 @@ public class 성격_유형_검사하기_Sully {
                     type = first;
                     score = 1;
                 }
+                case 4 -> {
+                    continue;
+                }
                 case 5 -> {
                     // 약간 동의
                     type = second;
@@ -58,8 +61,7 @@ public class 성격_유형_검사하기_Sully {
             }
 
             // type 같은 거에다가 value 값에 score 계속 더해줌
-            int beforeScore = indicatorMap.get(type);
-            indicatorMap.put(type, score + beforeScore);
+            indicatorMap.put(type, score + indicatorMap.get(type));
         }
 
         // 1~4 지표 비교하여 점수 누가 더 높은지 판별
@@ -91,7 +93,7 @@ public class 성격_유형_검사하기_Sully {
     }
 
     public static void main(String[] args) {
-        System.out.println(solution(new String[]{"AN", "CF", "MJ", "RT", "NA"}, new int[]{5, 3, 2, 7, 5}));
+        System.out.println(solution(new String[]{"AN", "CF", "MJ", "RT", "NA", "AN"}, new int[]{5, 3, 2, 7, 5, 4}));
         System.out.println(solution(new String[]{"TR", "RT", "TR"}, new int[]{7, 1, 3}));
     }
 }
